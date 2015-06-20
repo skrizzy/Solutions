@@ -1,45 +1,32 @@
 <html>
     <head>
         <title>Ernesto's Eggs</title>
-        <style>
-
-        </style>
-        <script>
+        <?php
             function calculatePrice() {
-                var numEggs = document.getElementById('num-eggs').value;
-                var pricePerDozen = getPricePerDozen(numEggs);
-                var pricePerEgg = pricePerDozen / 12;
-                var totalBill = pricePerEgg * numEggs;
+                int $numEggs = $_POST["numer-of-eggs"];
+                double $pricePerDozen = getPricePerDozen($numEggs);
+                double $pricePerEgg = $pricePerDozen / 12;
+                double $totalBill = $pricePerEgg * $numEggs;
 
                 document.getElementById('per-dozen').innerHTML = pricePerDozen.toFixed(2);
                 document.getElementById('per-egg').innerHTML = pricePerEgg.toFixed(3);
                 document.getElementById('bill').innerHTML = totalBill.toFixed(2);
             }
 
-            function getPricePerDozen(numEggs) {
-                if (numEggs < 48) return 0.50;
-                else if (numEggs >= 48 && numEggs < 72) return 0.45;
-                else if (numEggs >= 72 && numEggs < 132) return 0.40;
+            function getPricePerDozen(int $numEggs) {
+                if ($numEggs < 48) return 0.50;
+                else if ($numEggs >= 48 && $numEggs < 72) return 0.45;
+                else if ($numEggs >= 72 && $numEggs < 132) return 0.40;
                 else return 0.35;
             }
 
             function priceTableInit() {
-                for (var dracula = 1; dracula <= 120; dracula++) {
-                    var row = document.createElement('tr');
-
-                    var numEggs = document.createElement('td');
-                    numEggs.appendChild(document.createTextNode(dracula));
-
-                    var price = document.createElement('td');
-                    price.appendChild(document.createTextNode(
-                        (getPricePerDozen(dracula) / 12 * dracula).toFixed(2)));
-
-                    row.appendChild(numEggs);
-                    row.appendChild(price);
-                    document.getElementById('price-table').appendChild(row);
+                for (int $dracula = 1; $dracula <= 120; $dracula++) {
+                    echo "<tr><td>$dracula</td><td>" .
+                        (getPricePerDozen($dracula) / 12 * dracula) . "</td></tr>";
                 }
             }
-        </script>
+        ?>
     </head>
     <body onload="priceTableInit();">
         <form class="price-calculator">
