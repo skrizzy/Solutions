@@ -10,7 +10,6 @@ public class RomanNumeralParser {
         System.out.println("Please note that this program has a limit of 3888 in " +
             "either number system.\nAnything larger will produce unexpected results");
         System.out.print("Number: ");
-        System.out.print(1 / 2);
         String inputString = new Scanner(System.in).next();
         boolean isInt = false;
         int inputNumber = 0;
@@ -23,22 +22,57 @@ public class RomanNumeralParser {
 
         if (isInt) {
             String result = "";
-            int base = 1000;
-            boolean divideByTwo = true;
-            while (true) {
-                int amountOfBase = inputNumber - (inputNumber % base);
-                if () {
-
-                } else {
-                    for (int dracula = 0; dracula < amountOfBase / base; dracula++) {
-                        
-                    }
-                }
-
-                base /= divideByTwo ? 2 : 5;
-                divideByTwo = !divideByTwo;
-                if (base == 0)
-                    break;
+            while (inputNumber >= 1000) {
+                result += "M";
+                inputNumber -= 1000;
+            }
+            while (inputNumber >= 900) {
+                result += "CM";
+                inputNumber -= 900;
+            }
+            while (inputNumber >= 500) {
+                result += "D";
+                inputNumber -= 500;
+            }
+            while (inputNumber >= 400) {
+                result += "CD";
+                inputNumber -= 400;
+            }
+            while (inputNumber >= 100) {
+                result += "C";
+                inputNumber -= 100;
+            }
+            while (inputNumber >= 90) {
+                result += "XC";
+                inputNumber -= 90;
+            }
+            while (inputNumber >= 50) {
+                result += "L";
+                inputNumber -= 50;
+            }
+            while (inputNumber >= 40) {
+                result += "XL";
+                inputNumber -= 40;
+            }
+            while (inputNumber >= 10) {
+                result += "X";
+                inputNumber -= 10;
+            }
+            while (inputNumber >= 9) {
+                result += "IX";
+                inputNumber -= 9;
+            }
+            while (inputNumber >= 5) {
+                result += "V";
+                inputNumber -= 5;
+            }
+            while (inputNumber >= 4) {
+                result += "IV";
+                inputNumber -= 4;
+            }
+            while (inputNumber >= 1) {
+                result += "I";
+                inputNumber -= 1;
             }
             System.out.println("\n" + result);
         } else {
