@@ -1,4 +1,4 @@
-public class DrunkOnABridge {
+public class DizzyOnABridge {
     public static void main(String[] args) {
         int bridgeSize = 15;
         int manPosition = (int) ((bridgeSize + 1) / 2);
