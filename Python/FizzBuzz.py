@@ -1,9 +1,12 @@
-for x in range(1, 16):
-    stringToPrint = ""
-    if (x % 3 == 0):
-        stringToPrint = "Fizz"
-    if (x % 5 == 0):
-        stringToPrint += "Buzz"
-    if (x % 3 != 0 and x % 5 != 0):
-        stringToPrint = x
-    print (stringToPrint)
+# A likely Camper Solution to Fizzbuzz.  There are more efficient solutions.
+
+for i in range(1, 101, 1):
+    if i % 3 == 0 and i % 5 != 0:
+        print("Fizz")
+    if i % 3 != 0 and i % 5 == 0:
+        print("Buzz")
+    if i % 3 == 0 and i % 5 == 0:
+        print("FizzBuzz")
+    else:
+        print(i)
+
